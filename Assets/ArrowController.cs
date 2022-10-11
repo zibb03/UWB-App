@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;  // UI 부품을 사용하기 위해서 중요!
+
 
 public class ArrowController : MonoBehaviour
 {
    // public float x = 0;
     //public float y = 0;
-    private GameDirector axis;
+    
+    private GameDirector axis2;
 
     float rotSpeed = 0;  // 회전속도
     float targetangle;
@@ -25,7 +28,7 @@ public class ArrowController : MonoBehaviour
     void Update()
     {
         //외부 스크립트 변수 참조
-        axis = GetComponent<GameDirector>();
+        axis2 = GetComponent<GameDirector>();
 
         // 마우스가 눌리면 회전 속도를 설정한다
         /*if (Input.GetMouseButtonDown(0))
@@ -35,18 +38,18 @@ public class ArrowController : MonoBehaviour
        // Debug.Log(transform.eulerAngles.z - 360);
         //Debug.Log(-90 + Vector2.Angle(new Vector2(x, y), new Vector2(0, 0)));
         //Debug.Log(-90 + GetAngle(new Vector2(axis.x, axis.y), new Vector2(0, 0)));
-        //Debug.Log(axis.x);
-        //Debug.Log(axis.y);
+        Debug.Log(axis2.x);
+        Debug.Log(axis2.y);
 
         //현재 각도 : transform.eulerAngles.z - 360
         //목표 각도 : -90 + GetAngle(new Vector2(axis.x, axis.y), new Vector2(0, 0))
-        if (transform.eulerAngles.z != GetAngle(new Vector2(axis.y, axis.x), new Vector2(0, 0)))
+        if (transform.eulerAngles.z != GetAngle(new Vector2(axis2.y, axis2.x), new Vector2(0, 0)))
         {
             //Debug.Log("rotate");
-            if (axis.x > 0)
-                transform.rotation = Quaternion.Euler(0, 0, -GetAngle(new Vector2(axis.y, axis.x), new Vector2(0, 0)));
+            if (axis2.x > 0)
+                transform.rotation = Quaternion.Euler(0, 0, -GetAngle(new Vector2(axis2.y, axis2.x), new Vector2(0, 0)));
             else
-                transform.rotation = Quaternion.Euler(0, 0, -GetAngle(new Vector2(axis.y, axis.x), new Vector2(0, 0)));
+                transform.rotation = Quaternion.Euler(0, 0, -GetAngle(new Vector2(axis2.y, axis2.x), new Vector2(0, 0)));
 
             /*
             this.rotSpeed = 1;
